@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/nakkoh/argocd_hpa.git
+    targetRevision: master
+    path: manifest
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd_hpa
